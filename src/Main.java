@@ -28,9 +28,12 @@ public class Main {
            statement.execute("INSERT INTO Contacts (name,phone,email)"+
                            "VALUES('Tim',27710584555,'manq@gmail.com')");
 
-           statement.execute("SELECT * FROM Contacts");
-           ResultSet result = statement.getResultSet();
-           while(result.next()){
+           //long hand notation
+           //statement.execute("SELECT * FROM Contacts");
+           //ResultSet result = statement.getResultSet();
+           //short hand notation
+                ResultSet result = statement.executeQuery("SELECT * FROM Contacts");
+                while(result.next()){
                System.out.println(result.getString("name")+" " +result.getInt("phone") +" "+result.getString("email"));
            }
 
