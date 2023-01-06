@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,6 +27,14 @@ public class Main {
                    " (name TEXT,phone INTEGER,email TEXT)");
            statement.execute("INSERT INTO Contacts (name,phone,email)"+
                            "VALUES('Tim',27710584555,'manq@gmail.com')");
+
+           statement.execute("SELECT * FROM Contacts");
+           ResultSet result = statement.getResultSet();
+           while(result.next()){
+               System.out.println(result.getString("name")+" " +result.getInt("phone") +" "+result.getString("email"));
+           }
+
+           result.close();
            statement.close();
                 conn.close();
 
